@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/viproj.iml" filepath="$PROJECT_DIR$/.idea/viproj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/vi-nivo-proj.iml" filepath="$PROJECT_DIR$/.idea/vi-nivo-proj.iml" />
     </modules>
   </component>
 </project>
