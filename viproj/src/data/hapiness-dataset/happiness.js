@@ -15,6 +15,7 @@ module.exports.Happiness = function (callback) {
             obj.countries = {};
             obj.regions = {};
             obj.ranks = {};
+            obj.geoMap = {};
 
             const addCountryToCountries = (record) => {
                 if (!Object.getOwnPropertyNames(obj.countries).includes(record.Country)) {
@@ -32,11 +33,22 @@ module.exports.Happiness = function (callback) {
 
             const addCountryToRank = (record) => {
                 let year = record.Year + '';
-                let rank = record['Overall rank'];
+                let rank = record.Rank;
                 if (!Object.getOwnPropertyNames(obj.ranks).includes(year)) {
                     obj.ranks[year] = {};
                 }
+                if (!Object.getOwnPropertyNames(obj.ranks).includes('geoMap')) {
+                    obj.ranks['geoMap'] = [];
+                }
                 obj.ranks[year][rank] = record;
+            };
+
+            const addGeoMap = (record) => {
+                let year = record.Year + '';
+                if (!Object.getOwnPropertyNames(obj.geoMap).includes(year)) {
+                    obj.geoMap[year] = [];
+                }
+                if (record.CountryCode !== '#N/A') obj.geoMap[year].push({ id: record.CountryCode, value: record.Score });
             };
 
             const buildRadarChartStructure = (country) => {
@@ -44,11 +56,11 @@ module.exports.Happiness = function (callback) {
                 Object.entries(country).forEach(([k, v]) => {
                     result.push({
                         Year: k,
-                        'Social Support': v['Social_Support'],
-                        'Health Life Expectancy': v['Health_life_expectancy'],
-                        'Freedom of Choices': v['freedom_of_choices'],
+                        'Social Support': v['SocialSupport'],
+                        'Health Life Expectancy': v['HealthLifeExpectancy'],
+                        'Freedom of Choices': v['FreedomOfChoices'],
                         Generosity: v['Generosity'],
-                        'Perceptions of Corruption': v['Perceptions_of_corruption'],
+                        'Perceptions of Corruption': v['PerceptionsOfCorruption'],
                     });
                 });
 
@@ -79,11 +91,11 @@ module.exports.Happiness = function (callback) {
                     color: 'hsl(31, 70%, 50%)',
                 };
                 Object.entries(country).forEach(([k, v]) => {
-                    socialSupport.value += v['Social_Support'];
-                    healthLifeExpectancy.value += v['Health_life_expectancy'];
-                    freedomOfChoices.value += v['freedom_of_choices'];
+                    socialSupport.value += v['SocialSupport'];
+                    healthLifeExpectancy.value += v['HealthLifeExpectancy'];
+                    freedomOfChoices.value += v['FreedomOfChoices'];
                     generosity.value += v['Generosity'];
-                    perceptionsOfCorruption.value += v['Perceptions_of_corruption'];
+                    perceptionsOfCorruption.value += v['PerceptionsOfCorruption'];
                 });
                 socialSupport.value = parseFloat((socialSupport.value / count).toFixed(2));
                 healthLifeExpectancy.value = parseFloat((healthLifeExpectancy.value / count).toFixed(2));
@@ -119,11 +131,11 @@ module.exports.Happiness = function (callback) {
                     data: [],
                 };
                 Object.entries(country).forEach(([k, v]) => {
-                    socialSupport.data.push({ x: k, y: parseFloat(v['Social_Support']) });
-                    healthLifeExpectancy.data.push({ x: k, y: parseFloat(v['Health_life_expectancy']) });
-                    freedomOfChoices.data.push({ x: k, y: parseFloat(v['freedom_of_choices']) });
+                    socialSupport.data.push({ x: k, y: parseFloat(v['SocialSupport']) });
+                    healthLifeExpectancy.data.push({ x: k, y: parseFloat(v['HealthLifeExpectancy']) });
+                    freedomOfChoices.data.push({ x: k, y: parseFloat(v['FreedomOfChoices']) });
                     generosity.data.push({ x: k, y: parseFloat(v['Generosity']) });
-                    perceptionsOfCorruption.data.push({ x: k, y: parseFloat(v['Perceptions_of_corruption']) });
+                    perceptionsOfCorruption.data.push({ x: k, y: parseFloat(v['PerceptionsOfCorruption']) });
                 });
 
                 return [socialSupport, healthLifeExpectancy, freedomOfChoices, generosity, perceptionsOfCorruption];
@@ -134,11 +146,11 @@ module.exports.Happiness = function (callback) {
                 Object.entries(country).forEach(([k, v]) => {
                     result.push({
                         Year: k,
-                        'Social Support': parseFloat(v['Social_Support']),
-                        'Health Life Expectancy': parseFloat(v['Health_life_expectancy']),
-                        'Freedom of Choices': parseFloat(v['freedom_of_choices']),
+                        'Social Support': parseFloat(v['SocialSupport']),
+                        'Health Life Expectancy': parseFloat(v['HealthLifeExpectancy']),
+                        'Freedom of Choices': parseFloat(v['FreedomOfChoices']),
                         Generosity: parseFloat(v['Generosity']),
-                        'Perceptions of Corruption': parseFloat(v['Perceptions_of_corruption']),
+                        'Perceptions of Corruption': parseFloat(v['PerceptionsOfCorruption']),
                     });
                 });
                 return result;
@@ -146,21 +158,22 @@ module.exports.Happiness = function (callback) {
 
             // Build dataset structure
             obj.data.syncForEach((record) => {
-                record['Overall rank'] = parseInt(record['Overall rank']);
+                record['Rank'] = parseInt(record.Rank);
                 record['Year'] = parseInt(record['Year']);
-                record['Score'] = parseInt(record['Score']);
+                record['Score'] = parseFloat(record['Score']);
                 record['GDP'] = parseFloat(record['GDP']);
-                record['Social_Support'] = parseFloat(record['Social_Support']);
-                record['Health_life_expectancy'] = parseFloat(record['Health_life_expectancy']);
-                record['freedom_of_choices'] = parseFloat(record['freedom_of_choices']);
+                record['SocialSupport'] = parseFloat(record['SocialSupport']);
+                record['HealthLifeExpectancy'] = parseFloat(record['HealthLifeExpectancy']);
+                record['FreedomOfChoices'] = parseFloat(record['FreedomOfChoices']);
                 record['Generosity'] = parseFloat(record['Generosity']);
-                record['Perceptions_of_corruption'] = parseFloat(record['Perceptions_of_corruption']);
+                record['PerceptionsOfCorruption'] = parseFloat(record['PerceptionsOfCorruption']);
                 addCountryToCountries(record);
                 addCountryToRegion(record);
                 addCountryToRank(record);
+                addGeoMap(record);
             });
 
-            // Add Nino.rocks structures
+            // Add Nivo.rocks structures
             Object.entries(obj.countries).forEach(([k, v]) => {
                 const country = obj.countries[k];
                 const nivo = {};

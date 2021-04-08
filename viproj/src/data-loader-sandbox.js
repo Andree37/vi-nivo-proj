@@ -82,5 +82,9 @@ happinessHandler.Happiness((err, dataset) => {
     // País em primeiro lugar em 2019
     console.log(dataset.ranks['2019']['10']);
 
+    // Obter dados para o mapa. Estão organizados por ano.
+    //Por exemplo:
+    console.log(dataset.geoMap['2019']);
+
     // Bom, é explorar
 });
