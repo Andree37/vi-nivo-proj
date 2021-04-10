@@ -580,7 +580,7 @@ class GeoChart  extends React.Component{
         "value": 676993
       }]
     return (
-      <div style={{height: '500px', width: '900px'}}>
+      <div>
         <ResponsiveChoropleth
           data={data}
           features="/* please have a look at the description for usage */"
