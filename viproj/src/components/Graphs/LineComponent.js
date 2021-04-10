@@ -3,10 +3,10 @@ import {ResponsiveLine} from "@nivo/line";
 
 const LineComponent = ({data}) => {
   return (
-    <div style={{height: '500px', width: '100%'}}>
+    <div style={{height: '400px', width: '100%'}}>
       <ResponsiveLine
         data={data}
-        margin={{top: 50, right: 110, bottom: 50, left: 60}}
+        margin={{top: 10, right: 110, bottom: 50, left: 60}}
         xScale={{type: 'point'}}
         yScale={{type: 'linear', min: 'auto', max: 'auto', stacked: true, reverse: false}}
         yFormat=" >-.2f"

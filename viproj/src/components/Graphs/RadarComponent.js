@@ -3,19 +3,19 @@ import {ResponsiveRadar} from "@nivo/radar";
 
 const RadarComponent = ({data}) => {
   return (
-    <div style={{height: '500px', width: '900px'}}>
+    <div style={{height: '400px', width: '33%'}}>
       <ResponsiveRadar
         data={data}
         keys={['chardonay', 'carmenere', 'syrah']}
         indexBy="taste"
         maxValue="auto"
-        margin={{top: 70, right: 80, bottom: 40, left: 80}}
+        margin={{top: 0, right: 40, bottom: 90, left: 40}}
         curve="linearClosed"
         borderWidth={2}
         borderColor={{from: 'color'}}
         gridLevels={5}
         gridShape="circular"
-        gridLabelOffset={36}
+        gridLabelOffset={10}
         enableDots={true}
         dotSize={10}
         dotColor={{theme: 'background'}}
@@ -32,10 +32,10 @@ const RadarComponent = ({data}) => {
         isInteractive={true}
         legends={[
           {
-            anchor: 'top-left',
-            direction: 'column',
-            translateX: -50,
-            translateY: -40,
+            anchor: 'bottom',
+            direction: 'row',
+            translateX: -30,
+            translateY: -30,
             itemWidth: 80,
             itemHeight: 20,
             itemTextColor: '#999',

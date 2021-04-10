@@ -3,12 +3,12 @@ import {ResponsiveBar} from "@nivo/bar";
 
 const BarComponent = ({data}) => {
   return (
-    <div style={{height: '500px', width: '900px'}}>
+    <div style={{height: '400px', width: '33%'}}>
       <ResponsiveBar
         data={data}
         keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
         indexBy="country"
-        margin={{top: 50, right: 130, bottom: 50, left: 60}}
+        margin={{top: 20, right: 10, bottom: 100, left: 60}}
         padding={0.3}
         valueScale={{type: 'linear'}}
         indexScale={{type: 'band', round: true}}
@@ -72,15 +72,15 @@ const BarComponent = ({data}) => {
         legends={[
           {
             dataFrom: 'keys',
-            anchor: 'bottom-right',
-            direction: 'column',
+            anchor: 'bottom',
+            direction: 'row',
             justify: false,
-            translateX: 120,
-            translateY: 0,
+            translateX: 0,
+            translateY: 65,
             itemsSpacing: 2,
-            itemWidth: 100,
+            itemWidth: 40,
             itemHeight: 20,
-            itemDirection: 'left-to-right',
+            itemDirection: 'top-to-bottom',
             itemOpacity: 0.85,
             symbolSize: 20,
             effects: [
