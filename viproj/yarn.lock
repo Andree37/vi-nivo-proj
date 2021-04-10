@@ -1451,7 +1451,7 @@
 
 "@nivo/core@^0.67.0":
   version "0.67.0"
-  resolved "https://registry.yarnpkg.com/@nivo/core/-/core-0.67.0.tgz#29f07b8bed2bcefb9402d14a9abe2895c5b2bfa2"
+  resolved "http://dev.elecctro.com:4873/@nivo%2fcore/-/core-0.67.0.tgz#29f07b8bed2bcefb9402d14a9abe2895c5b2bfa2"
   integrity sha512-F8amsf/MnIuZLoN6ikla8bKlUkUI3HVhy6R2qMF2jDS5xnYch3Sno9OPTTuR8RnYGCr57yClnvFuJzw251GE6g==
   dependencies:
     d3-color "^2.0.0"
@@ -1469,7 +1469,7 @@
 
 "@nivo/geo@^0.67.0":
   version "0.67.0"
-  resolved "https://registry.yarnpkg.com/@nivo/geo/-/geo-0.67.0.tgz#0df29104b2d900c8611f25b14ac3a82ad3d735b9"
+  resolved "http://dev.elecctro.com:4873/@nivo%2fgeo/-/geo-0.67.0.tgz#0df29104b2d900c8611f25b14ac3a82ad3d735b9"
   integrity sha512-IeZ+J5pHNuHzpPye2u/wqADLxDBHUT0xCvsbtstadtUlnuadaX4r20nnXg0yERsGND62u9Rvs0lKoJ2RGi4ACw==
   dependencies:
     "@nivo/colors" "0.67.0"
