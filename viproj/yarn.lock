@@ -1451,7 +1451,7 @@
 
 "@nivo/core@^0.67.0":
   version "0.67.0"
-  resolved "https://registry.yarnpkg.com/@nivo/core/-/core-0.67.0.tgz#29f07b8bed2bcefb9402d14a9abe2895c5b2bfa2"
+  resolved "http://dev.elecctro.com:4873/@nivo%2fcore/-/core-0.67.0.tgz#29f07b8bed2bcefb9402d14a9abe2895c5b2bfa2"
   integrity sha512-F8amsf/MnIuZLoN6ikla8bKlUkUI3HVhy6R2qMF2jDS5xnYch3Sno9OPTTuR8RnYGCr57yClnvFuJzw251GE6g==
   dependencies:
     d3-color "^2.0.0"
@@ -1475,6 +1475,44 @@
     lodash "^4.17.11"
     recompose "^0.30.0"
 
+"@nivo/line@^0.67.0":
+  version "0.67.0"
+  resolved "http://dev.elecctro.com:4873/@nivo%2fline/-/line-0.67.0.tgz#c9abde9e1ac4f758377775e1d266a40aedb5c1ea"
+  integrity sha512-+iZpvVekl6GXZl+GnqL5kvtIhNl05tkcCJ6ajheVmOuzaFV7J9xBk8E3bFqNtFDM+vt4b0ggujW8zrlrZvrwUg==
+  dependencies:
+    "@nivo/annotations" "0.67.0"
+    "@nivo/axes" "0.67.0"
+    "@nivo/colors" "0.67.0"
+    "@nivo/legends" "0.67.0"
+    "@nivo/scales" "0.67.0"
+    "@nivo/tooltip" "0.67.0"
+    "@nivo/voronoi" "0.67.0"
+    d3-shape "^1.3.5"
+    react-spring "9.0.0-rc.3"
+
+"@nivo/pie@^0.67.0":
+  version "0.67.0"
+  resolved "http://dev.elecctro.com:4873/@nivo%2fpie/-/pie-0.67.0.tgz#4b877eea25c0cf521a807ebf4d46260ad411cda9"
+  integrity sha512-TYxwvX5xCPQ+vUOFAPjhvwWw++/HXdRzCm08RHCAWtH5iNPwMoALPh2cSawqcVFwxNPnh0xv/nLTKkZIq2N2dw==
+  dependencies:
+    "@nivo/colors" "0.67.0"
+    "@nivo/legends" "0.67.0"
+    "@nivo/tooltip" "0.67.0"
+    d3-shape "^1.3.5"
+    lodash "^4.17.11"
+
+"@nivo/radar@^0.67.0":
+  version "0.67.0"
+  resolved "http://dev.elecctro.com:4873/@nivo%2fradar/-/radar-0.67.0.tgz#4cc89f77c9810b6e069bdeb657fb9aee0d7eaa70"
+  integrity sha512-VhxBs78OJ7k5KTBGRk4VStTV7Fw91Nj2s43RbhqXSfHUWOyt/SAD6meo95xeJAbqKZdzJ3grlI6s7O08Dx3pXg==
+  dependencies:
+    "@nivo/colors" "0.67.0"
+    "@nivo/legends" "0.67.0"
+    "@nivo/tooltip" "0.67.0"
+    d3-scale "^3.0.0"
+    d3-shape "^1.3.5"
+    react-spring "9.0.0-rc.3"
+
 "@nivo/scales@0.67.0":
   version "0.67.0"
   resolved "https://registry.yarnpkg.com/@nivo/scales/-/scales-0.67.0.tgz#8e79e990ebd555bdce7c3dcdd73b8ad46cb0a74a"
@@ -1490,6 +1528,15 @@
   integrity sha512-Z4h4Ks/fFd7Cl2uSG/trfSYLXaiQNyFX2wGJrE/UPzDSpf4XqaW8uEBaK3p46200WG2AgltG0fHrouGNyMJ+1g==
   dependencies:
     react-spring "9.0.0-rc.3"
+
+"@nivo/voronoi@0.67.0":
+  version "0.67.0"
+  resolved "http://dev.elecctro.com:4873/@nivo%2fvoronoi/-/voronoi-0.67.0.tgz#07ec873846ec12aa62d1c1884e274ea114b4341b"
+  integrity sha512-Z+e+fa92xWIhbpSRdQGJtei3bBHTbLnsmXtfje+Xz8LYpkyxp8R/iTs9cqzQ4KILp1Tv6EnQYWrFWNizN3fNGA==
+  dependencies:
+    d3-delaunay "^5.1.1"
+    d3-scale "^3.0.0"
+    recompose "^0.30.0"
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -4050,7 +4097,7 @@ d3-contour@2:
   dependencies:
     d3-array "2"
 
-d3-delaunay@5:
+d3-delaunay@5, d3-delaunay@^5.1.1:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/d3-delaunay/-/d3-delaunay-5.3.0.tgz#b47f05c38f854a4e7b3cea80e0bb12e57398772d"
   integrity sha512-amALSrOllWVLaHTnDLHwMIiz0d1bBu9gZXd1FiLfXf8sHcX9jrcj81TVZOqD4UX7MgBZZ07c8GxzEgBpJqc74w==

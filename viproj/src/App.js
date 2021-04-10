@@ -1,212 +1,457 @@
-// install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/bar
-import { ResponsiveBar } from '@nivo/bar'
+import ComparisonCard from "./components/ComparisonCard";
 
 
 const App = () => {
 
-  const data = [
+  const pieData = [
+    {
+      "id": "css",
+      "label": "css",
+      "value": 449,
+      "color": "hsl(326, 70%, 50%)"
+    },
+    {
+      "id": "rust",
+      "label": "rust",
+      "value": 526,
+      "color": "hsl(85, 70%, 50%)"
+    },
+    {
+      "id": "scala",
+      "label": "scala",
+      "value": 38,
+      "color": "hsl(254, 70%, 50%)"
+    },
+    {
+      "id": "java",
+      "label": "java",
+      "value": 501,
+      "color": "hsl(204, 70%, 50%)"
+    },
+    {
+      "id": "hack",
+      "label": "hack",
+      "value": 478,
+      "color": "hsl(308, 70%, 50%)"
+    }
+  ];
+
+  const radarData = [
+    {
+      "taste": "fruity",
+      "chardonay": 77,
+      "carmenere": 27,
+      "syrah": 83
+    },
+    {
+      "taste": "bitter",
+      "chardonay": 64,
+      "carmenere": 59,
+      "syrah": 84
+    },
+    {
+      "taste": "heavy",
+      "chardonay": 81,
+      "carmenere": 118,
+      "syrah": 93
+    },
+    {
+      "taste": "strong",
+      "chardonay": 78,
+      "carmenere": 46,
+      "syrah": 98
+    },
+    {
+      "taste": "sunny",
+      "chardonay": 76,
+      "carmenere": 102,
+      "syrah": 87
+    }
+  ]
+
+  const barData = [
     {
       "country": "AD",
-      "hot dog": 176,
-      "hot dogColor": "hsl(198, 70%, 50%)",
-      "burger": 61,
-      "burgerColor": "hsl(342, 70%, 50%)",
-      "sandwich": 76,
-      "sandwichColor": "hsl(223, 70%, 50%)",
-      "kebab": 162,
-      "kebabColor": "hsl(40, 70%, 50%)",
-      "fries": 16,
-      "friesColor": "hsl(215, 70%, 50%)",
-      "donut": 150,
-      "donutColor": "hsl(120, 70%, 50%)"
+      "hot dog": 15,
+      "hot dogColor": "hsl(0, 70%, 50%)",
+      "burger": 58,
+      "burgerColor": "hsl(76, 70%, 50%)",
+      "sandwich": 193,
+      "sandwichColor": "hsl(25, 70%, 50%)",
+      "kebab": 136,
+      "kebabColor": "hsl(62, 70%, 50%)",
+      "fries": 165,
+      "friesColor": "hsl(319, 70%, 50%)",
+      "donut": 0,
+      "donutColor": "hsl(318, 70%, 50%)"
     },
     {
       "country": "AE",
-      "hot dog": 84,
-      "hot dogColor": "hsl(316, 70%, 50%)",
-      "burger": 90,
-      "burgerColor": "hsl(332, 70%, 50%)",
-      "sandwich": 85,
-      "sandwichColor": "hsl(334, 70%, 50%)",
-      "kebab": 100,
-      "kebabColor": "hsl(124, 70%, 50%)",
-      "fries": 183,
-      "friesColor": "hsl(138, 70%, 50%)",
-      "donut": 41,
-      "donutColor": "hsl(48, 70%, 50%)"
+      "hot dog": 124,
+      "hot dogColor": "hsl(311, 70%, 50%)",
+      "burger": 16,
+      "burgerColor": "hsl(198, 70%, 50%)",
+      "sandwich": 161,
+      "sandwichColor": "hsl(252, 70%, 50%)",
+      "kebab": 18,
+      "kebabColor": "hsl(277, 70%, 50%)",
+      "fries": 90,
+      "friesColor": "hsl(131, 70%, 50%)",
+      "donut": 174,
+      "donutColor": "hsl(271, 70%, 50%)"
     },
     {
       "country": "AF",
-      "hot dog": 181,
-      "hot dogColor": "hsl(318, 70%, 50%)",
-      "burger": 130,
-      "burgerColor": "hsl(119, 70%, 50%)",
-      "sandwich": 102,
-      "sandwichColor": "hsl(278, 70%, 50%)",
-      "kebab": 178,
-      "kebabColor": "hsl(251, 70%, 50%)",
-      "fries": 9,
-      "friesColor": "hsl(227, 70%, 50%)",
-      "donut": 85,
-      "donutColor": "hsl(157, 70%, 50%)"
+      "hot dog": 59,
+      "hot dogColor": "hsl(244, 70%, 50%)",
+      "burger": 109,
+      "burgerColor": "hsl(296, 70%, 50%)",
+      "sandwich": 198,
+      "sandwichColor": "hsl(277, 70%, 50%)",
+      "kebab": 130,
+      "kebabColor": "hsl(187, 70%, 50%)",
+      "fries": 137,
+      "friesColor": "hsl(30, 70%, 50%)",
+      "donut": 54,
+      "donutColor": "hsl(60, 70%, 50%)"
     },
     {
       "country": "AG",
-      "hot dog": 172,
-      "hot dogColor": "hsl(191, 70%, 50%)",
-      "burger": 122,
-      "burgerColor": "hsl(154, 70%, 50%)",
-      "sandwich": 177,
-      "sandwichColor": "hsl(90, 70%, 50%)",
-      "kebab": 100,
-      "kebabColor": "hsl(114, 70%, 50%)",
-      "fries": 165,
-      "friesColor": "hsl(216, 70%, 50%)",
-      "donut": 70,
-      "donutColor": "hsl(78, 70%, 50%)"
+      "hot dog": 95,
+      "hot dogColor": "hsl(303, 70%, 50%)",
+      "burger": 108,
+      "burgerColor": "hsl(287, 70%, 50%)",
+      "sandwich": 178,
+      "sandwichColor": "hsl(316, 70%, 50%)",
+      "kebab": 42,
+      "kebabColor": "hsl(248, 70%, 50%)",
+      "fries": 194,
+      "friesColor": "hsl(171, 70%, 50%)",
+      "donut": 112,
+      "donutColor": "hsl(92, 70%, 50%)"
     },
     {
       "country": "AI",
-      "hot dog": 11,
-      "hot dogColor": "hsl(279, 70%, 50%)",
-      "burger": 111,
-      "burgerColor": "hsl(51, 70%, 50%)",
-      "sandwich": 184,
-      "sandwichColor": "hsl(219, 70%, 50%)",
-      "kebab": 51,
-      "kebabColor": "hsl(327, 70%, 50%)",
-      "fries": 189,
-      "friesColor": "hsl(228, 70%, 50%)",
-      "donut": 142,
-      "donutColor": "hsl(190, 70%, 50%)"
+      "hot dog": 138,
+      "hot dogColor": "hsl(84, 70%, 50%)",
+      "burger": 86,
+      "burgerColor": "hsl(162, 70%, 50%)",
+      "sandwich": 199,
+      "sandwichColor": "hsl(12, 70%, 50%)",
+      "kebab": 191,
+      "kebabColor": "hsl(10, 70%, 50%)",
+      "fries": 93,
+      "friesColor": "hsl(193, 70%, 50%)",
+      "donut": 111,
+      "donutColor": "hsl(34, 70%, 50%)"
     },
     {
       "country": "AL",
-      "hot dog": 3,
-      "hot dogColor": "hsl(328, 70%, 50%)",
-      "burger": 85,
-      "burgerColor": "hsl(278, 70%, 50%)",
-      "sandwich": 60,
-      "sandwichColor": "hsl(167, 70%, 50%)",
-      "kebab": 0,
-      "kebabColor": "hsl(132, 70%, 50%)",
-      "fries": 35,
-      "friesColor": "hsl(177, 70%, 50%)",
-      "donut": 189,
-      "donutColor": "hsl(148, 70%, 50%)"
+      "hot dog": 189,
+      "hot dogColor": "hsl(330, 70%, 50%)",
+      "burger": 93,
+      "burgerColor": "hsl(108, 70%, 50%)",
+      "sandwich": 81,
+      "sandwichColor": "hsl(45, 70%, 50%)",
+      "kebab": 55,
+      "kebabColor": "hsl(133, 70%, 50%)",
+      "fries": 48,
+      "friesColor": "hsl(282, 70%, 50%)",
+      "donut": 77,
+      "donutColor": "hsl(185, 70%, 50%)"
     },
     {
       "country": "AM",
-      "hot dog": 16,
-      "hot dogColor": "hsl(267, 70%, 50%)",
-      "burger": 165,
-      "burgerColor": "hsl(151, 70%, 50%)",
-      "sandwich": 70,
-      "sandwichColor": "hsl(38, 70%, 50%)",
-      "kebab": 130,
-      "kebabColor": "hsl(83, 70%, 50%)",
-      "fries": 197,
-      "friesColor": "hsl(83, 70%, 50%)",
-      "donut": 22,
-      "donutColor": "hsl(310, 70%, 50%)"
+      "hot dog": 127,
+      "hot dogColor": "hsl(234, 70%, 50%)",
+      "burger": 55,
+      "burgerColor": "hsl(32, 70%, 50%)",
+      "sandwich": 94,
+      "sandwichColor": "hsl(343, 70%, 50%)",
+      "kebab": 165,
+      "kebabColor": "hsl(337, 70%, 50%)",
+      "fries": 44,
+      "friesColor": "hsl(96, 70%, 50%)",
+      "donut": 93,
+      "donutColor": "hsl(40, 70%, 50%)"
+    }
+  ]
+
+  const lineData = [
+    {
+      "id": "japan",
+      "color": "hsl(315, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 213
+        },
+        {
+          "x": "helicopter",
+          "y": 127
+        },
+        {
+          "x": "boat",
+          "y": 92
+        },
+        {
+          "x": "train",
+          "y": 225
+        },
+        {
+          "x": "subway",
+          "y": 117
+        },
+        {
+          "x": "bus",
+          "y": 202
+        },
+        {
+          "x": "car",
+          "y": 10
+        },
+        {
+          "x": "moto",
+          "y": 199
+        },
+        {
+          "x": "bicycle",
+          "y": 157
+        },
+        {
+          "x": "horse",
+          "y": 177
+        },
+        {
+          "x": "skateboard",
+          "y": 287
+        },
+        {
+          "x": "others",
+          "y": 209
+        }
+      ]
+    },
+    {
+      "id": "france",
+      "color": "hsl(197, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 139
+        },
+        {
+          "x": "helicopter",
+          "y": 143
+        },
+        {
+          "x": "boat",
+          "y": 132
+        },
+        {
+          "x": "train",
+          "y": 90
+        },
+        {
+          "x": "subway",
+          "y": 264
+        },
+        {
+          "x": "bus",
+          "y": 296
+        },
+        {
+          "x": "car",
+          "y": 25
+        },
+        {
+          "x": "moto",
+          "y": 130
+        },
+        {
+          "x": "bicycle",
+          "y": 18
+        },
+        {
+          "x": "horse",
+          "y": 213
+        },
+        {
+          "x": "skateboard",
+          "y": 267
+        },
+        {
+          "x": "others",
+          "y": 245
+        }
+      ]
+    },
+    {
+      "id": "us",
+      "color": "hsl(215, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 2
+        },
+        {
+          "x": "helicopter",
+          "y": 107
+        },
+        {
+          "x": "boat",
+          "y": 136
+        },
+        {
+          "x": "train",
+          "y": 231
+        },
+        {
+          "x": "subway",
+          "y": 83
+        },
+        {
+          "x": "bus",
+          "y": 56
+        },
+        {
+          "x": "car",
+          "y": 204
+        },
+        {
+          "x": "moto",
+          "y": 144
+        },
+        {
+          "x": "bicycle",
+          "y": 234
+        },
+        {
+          "x": "horse",
+          "y": 96
+        },
+        {
+          "x": "skateboard",
+          "y": 168
+        },
+        {
+          "x": "others",
+          "y": 249
+        }
+      ]
+    },
+    {
+      "id": "germany",
+      "color": "hsl(302, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 248
+        },
+        {
+          "x": "helicopter",
+          "y": 122
+        },
+        {
+          "x": "boat",
+          "y": 122
+        },
+        {
+          "x": "train",
+          "y": 260
+        },
+        {
+          "x": "subway",
+          "y": 239
+        },
+        {
+          "x": "bus",
+          "y": 289
+        },
+        {
+          "x": "car",
+          "y": 43
+        },
+        {
+          "x": "moto",
+          "y": 236
+        },
+        {
+          "x": "bicycle",
+          "y": 90
+        },
+        {
+          "x": "horse",
+          "y": 39
+        },
+        {
+          "x": "skateboard",
+          "y": 71
+        },
+        {
+          "x": "others",
+          "y": 79
+        }
+      ]
+    },
+    {
+      "id": "norway",
+      "color": "hsl(271, 70%, 50%)",
+      "data": [
+        {
+          "x": "plane",
+          "y": 270
+        },
+        {
+          "x": "helicopter",
+          "y": 226
+        },
+        {
+          "x": "boat",
+          "y": 287
+        },
+        {
+          "x": "train",
+          "y": 109
+        },
+        {
+          "x": "subway",
+          "y": 16
+        },
+        {
+          "x": "bus",
+          "y": 243
+        },
+        {
+          "x": "car",
+          "y": 75
+        },
+        {
+          "x": "moto",
+          "y": 63
+        },
+        {
+          "x": "bicycle",
+          "y": 194
+        },
+        {
+          "x": "horse",
+          "y": 56
+        },
+        {
+          "x": "skateboard",
+          "y": 23
+        },
+        {
+          "x": "others",
+          "y": 26
+        }
+      ]
     }
   ]
   return (
-    <div style={{height: '500px', width: '900px'}}>
-      <ResponsiveBar
-        data={data}
-        keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
-        indexBy="country"
-        margin={{top: 50, right: 130, bottom: 50, left: 60}}
-        padding={0.3}
-        valueScale={{type: 'linear'}}
-        indexScale={{type: 'band', round: true}}
-        colors={{scheme: 'nivo'}}
-        defs={[
-          {
-            id: 'dots',
-            type: 'patternDots',
-            background: 'inherit',
-            color: '#38bcb2',
-            size: 4,
-            padding: 1,
-            stagger: true
-          },
-          {
-            id: 'lines',
-            type: 'patternLines',
-            background: 'inherit',
-            color: '#eed312',
-            rotation: -45,
-            lineWidth: 6,
-            spacing: 10
-          }
-        ]}
-        fill={[
-          {
-            match: {
-              id: 'fries'
-            },
-            id: 'dots'
-          },
-          {
-            match: {
-              id: 'sandwich'
-            },
-            id: 'lines'
-          }
-        ]}
-        borderColor={{from: 'color', modifiers: [['darker', 1.6]]}}
-        axisTop={null}
-        axisRight={null}
-        axisBottom={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'country',
-          legendPosition: 'middle',
-          legendOffset: 32
-        }}
-        axisLeft={{
-          tickSize: 5,
-          tickPadding: 5,
-          tickRotation: 0,
-          legend: 'food',
-          legendPosition: 'middle',
-          legendOffset: -40
-        }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor={{from: 'color', modifiers: [['darker', 1.6]]}}
-        legends={[
-          {
-            dataFrom: 'keys',
-            anchor: 'bottom-right',
-            direction: 'column',
-            justify: false,
-            translateX: 120,
-            translateY: 0,
-            itemsSpacing: 2,
-            itemWidth: 100,
-            itemHeight: 20,
-            itemDirection: 'left-to-right',
-            itemOpacity: 0.85,
-            symbolSize: 20,
-            effects: [
-              {
-                on: 'hover',
-                style: {
-                  itemOpacity: 1
-                }
-              }
-            ]
-          }
-        ]}
-        animate={true}
-        motionStiffness={90}
-        motionDamping={15}
-      />
+    <div>
+      <ComparisonCard radarData={radarData} pieData={pieData} barData={barData} lineData={lineData}/>
     </div>
   )
 }
