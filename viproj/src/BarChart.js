@@ -3,8 +3,7 @@
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar'
 
-
-class BarChart extends React.Component {
+class BarChart  extends React.Component{
   render(){
   const data = [
     {
@@ -115,6 +114,7 @@ class BarChart extends React.Component {
   ];
   return (
     <div>
+     <h3>Bar Chart</h3>
       <ResponsiveBar
         data={data}
         keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
