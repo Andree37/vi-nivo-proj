@@ -1,3 +1,6 @@
+/**
+ * Select component for the data filtering
+ */
 import React from 'react';
 import Select from "react-select";
 
@@ -26,10 +29,11 @@ const formatGroupLabel = data => (
   </div>
 );
 
-const SelectComponent = ({options}) => {
+const SelectComponent = ({options, onChangeHandle}) => {
   return (
     <div style={{width: '200px'}}>
       <Select
+        onChange={onChangeHandle}
         defaultValue={options[0]}
         options={options}
         formatGroupLabel={formatGroupLabel}

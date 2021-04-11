@@ -1,6 +1,10 @@
 import React from 'react';
 import CountryDetailCard from "./CountryDetailCard";
 
+// (very long) arrays of data just to get some placeholders
+// this is not gonna exist after, its just gonna be
+// the object to make the filtering
+// that is gonna be sent to other props
 const pieData = [
   {
     "id": "css",
@@ -448,6 +452,8 @@ const lineData = [
   }
 ]
 
+// countrydetailcard props -> data object
+// props need to be changed to the object to do the data filtering
 const ComparisonCard = () => {
   return (
     <div style={{width: '100%', border: "solid black 1px"}}>
