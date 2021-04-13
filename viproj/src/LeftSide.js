@@ -601,8 +601,7 @@ class LeftSide extends React.Component{
    }
    
    onChange = data =>{
-     console.log(data)
-     console.log(data.type)
+  
      this.setState({
       [data.type]: {
         ...this.state[data.type],

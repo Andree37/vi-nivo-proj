@@ -29,7 +29,7 @@ const GeoChart = ( props)=> {
           legends={[
             {
               anchor: 'bottom-left',
-              direction: 'row',
+              direction: 'column',
               justify: true,
               translateX: 20,
               translateY: 20,
