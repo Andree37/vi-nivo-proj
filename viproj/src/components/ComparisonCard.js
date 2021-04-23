@@ -457,9 +457,6 @@ const lineData = [
 const ComparisonCard = () => {
   return (
     <div style={{width: '100%', border: "solid black 1px"}}>
-      <div style={{display: 'flex', width: '100%', backgroundColor: 'lightgray', height: '50px'}}>
-        HEADER
-      </div>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-start'}}>
         <div style={{width: '50%', border: "solid black 1px"}}>
           <CountryDetailCard radarData={radarData} pieData={pieData} barData={barData} lineData={lineData}/>

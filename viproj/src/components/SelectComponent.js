@@ -34,7 +34,7 @@ const SelectComponent = ({options, onChangeHandle}) => {
     <div style={{width: '200px'}}>
       <Select
         onChange={onChangeHandle}
-        defaultValue={options[0]}
+        defaultValue={options && options[0]}
         options={options}
         formatGroupLabel={formatGroupLabel}
       />

@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 import RadarComponent from "./Graphs/RadarComponent";
 import PieComponent from "./Graphs/PieComponent";
 import BarComponent from "./Graphs/BarComponent";
 import LineComponent from "./Graphs/LineComponent";
 import SelectComponent from "./SelectComponent";
+
+const happinessHandler = require('../data/hapiness-dataset/happiness');
 
 // just some placeholders for the options
 // later to be changed to some real static data
@@ -15,7 +17,7 @@ const optionRegions = [
   {value: 'sul', label: 'Sul'}
 ]
 
-const optionCountries = [
+let optionCountries = [
   {value: 'portugal', label: 'Portugal'},
   {value: 'espanha', label: 'Espanha'},
 ]
@@ -27,22 +29,32 @@ const optionYears = [
 ]
 
 const CountryDetailCard = (props) => {
-  const [optionRegion, setOptionRegion] = useState(optionRegions[0]);
-  const [optionCountry, setOptionCountry] = useState(optionCountries[0]);
-  const [optionYear, setOptionYear] = useState(optionYears[0]);
+  const [regions, setRegions] = useState();
+  const [optionRegion, setOptionRegion] = useState();
+  const [optionCountry, setOptionCountry] = useState();
+  const [optionYear, setOptionYear] = useState();
   // do fetching and filtering of data on this component
   // based on options above
   // dataset.get(optionRegion, whatever)
   // props for now is just an object of data for each graphType
+  /*
+  useEffect(() => {
+    happinessHandler.Happiness((err, dataset) => {
+      setRegions(dataset.countries.map(c => ({value: c, label: c})));
+    })
+  }, []);
+   */
+
+
   const {radarData, pieData, barData, lineData} = props;
   // later it can be just the data object, ready for filtering like raimundo did
 
   return (
     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start'}}>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-      <SelectComponent options={optionRegions} onChangeHandle={setOptionRegion}/>
-      <SelectComponent options={optionCountries} onChangeHandle={setOptionCountry}/>
-      <SelectComponent options={optionYears} onChangeHandle={setOptionYear}/>
+        <SelectComponent options={optionRegions} onChangeHandle={setOptionRegion}/>
+        <SelectComponent options={optionCountries} onChangeHandle={setOptionCountry}/>
+        <SelectComponent options={optionYears} onChangeHandle={setOptionYear}/>
       </div>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-start'}}>
         <RadarComponent data={radarData}/>
