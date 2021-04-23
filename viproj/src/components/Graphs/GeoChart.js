@@ -1,44 +1,51 @@
-// install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/geo
 import React from 'react';
-import {ResponsiveChoroplethCanvas} from '@nivo/geo'
+import {ResponsiveChoropleth} from '@nivo/geo'
 
-const worldCountries = require('./worldCountries.json');
+const worldCountries = require('../../worldCountries.json');
 
-const GeoChart = ( props)=> {
-  const {geodata,zoom,traX,traY} = props
-   
+const GeoChart = ({data})=> {
+
     return (
-      <div style={{width: '900px', height: '500px'}}>
-        <ResponsiveChoroplethCanvas
-          data={geodata}
+      <div style={{width: '1200px', height: '700px'}}>
+        <ResponsiveChoropleth
+          data={data}
           features={worldCountries.features}
-          margin={{top: 0, right: 0, bottom: 0, left: 0}}
-          colors="RdBu"
-          domain={[0, 1000000]}
-          unknownColor="#101b42"
+          margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+          colors="nivo"
+          domain={[ 0, 1000000 ]}
+          unknownColor="#666666"
           label="properties.name"
           valueFormat=".2s"
-          projectionTranslation={[traX, traY]}
-          projectionRotation={[0, 0, 0]}
-          projectionScale= {zoom}  
-          enableGraticule={false}
-          graticuleLineColor="rgba(0, 0, 0, .2)"
+          projectionTranslation={[ 0.5, 0.5 ]}
+          projectionRotation={[ 0, 0, 0 ]}
+          projectionScale= {120}
+          enableGraticule={true}
+          graticuleLineColor="#dddddd"
           borderWidth={0.5}
-          borderColor="#101b42"
+          borderColor="#152538"
           legends={[
             {
-              anchor: 'bottom-left',
+              anchor: 'left',
               direction: 'column',
               justify: true,
               translateX: 20,
-              translateY: 20,
+              translateY: -100,
               itemsSpacing: 0,
-              itemWidth: 92,
+              itemWidth: 94,
               itemHeight: 18,
               itemDirection: 'left-to-right',
+              itemTextColor: '#444444',
               itemOpacity: 0.85,
-              symbolSize: 18
+              symbolSize: 18,
+              effects: [
+                {
+                  on: 'hover',
+                  style: {
+                    itemTextColor: '#000000',
+                    itemOpacity: 1
+                  }
+                }
+              ]
             }
           ]}
         />
