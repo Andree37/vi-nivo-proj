@@ -37,13 +37,6 @@ const CountryDetailCard = (props) => {
   // based on options above
   // dataset.get(optionRegion, whatever)
   // props for now is just an object of data for each graphType
-  /*
-  useEffect(() => {
-    happinessHandler.Happiness((err, dataset) => {
-      setRegions(dataset.countries.map(c => ({value: c, label: c})));
-    })
-  }, []);
-   */
 
 
   const {radarData, pieData, barData, lineData} = props;
