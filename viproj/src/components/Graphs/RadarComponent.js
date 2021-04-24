@@ -1,13 +1,13 @@
 import React from 'react';
 import {ResponsiveRadar} from "@nivo/radar";
 
-const RadarComponent = ({data}) => {
+const RadarComponent = ({data, keys}) => {
   return (
     <div style={{height: '400px', width: '33%'}}>
       <ResponsiveRadar
         data={data}
-        keys={['chardonay', 'carmenere', 'syrah']}
-        indexBy="taste"
+        keys={keys}
+        indexBy="Year"
         maxValue="auto"
         margin={{top: 0, right: 40, bottom: 90, left: 40}}
         curve="linearClosed"

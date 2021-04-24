@@ -6,53 +6,62 @@ import BarComponent from "./Graphs/BarComponent";
 import LineComponent from "./Graphs/LineComponent";
 import SelectComponent from "./SelectComponent";
 
-const happinessHandler = require('../data/hapiness-dataset/happiness');
+const CountryDetailCard = ({dataset}) => {
+  const [optionRegion, setOptionRegion] = useState({value: "Western Europe", label: "Western Europe"});
+  const [optionCountry, setOptionCountry] = useState({value: "Switzerland", label: "Switzerland"});
 
-// just some placeholders for the options
-// later to be changed to some real static data
+  // selectors
+  const countries = useMemo(() => {
+    return dataset.regions[optionRegion?.value]?.map(r => ({
+      value: r.Country,
+      label: r.Country
+    }))
+  }, [dataset.regions, optionRegion?.value])
 
-const optionRegions = [
-  {value: 'norte', label: 'Norte'},
-  {value: 'centro', label: 'Centro'},
-  {value: 'sul', label: 'Sul'}
-]
+  const regions = useMemo(() => {
+    return Object.keys(dataset.regions).map(c => ({value: c, label: c}));
+  }, [dataset])
 
-let optionCountries = [
-  {value: 'portugal', label: 'Portugal'},
-  {value: 'espanha', label: 'Espanha'},
-]
+  // filter dataset to the declared variables above
+  // optionRegion, optionCountry
+  const radarData = useMemo(() => {
+    return dataset.countries[optionCountry?.value]?.nivo.radar.data
+  }, [dataset.countries, optionCountry?.value])
 
-const optionYears = [
-  {value: '2019', label: '2019'},
-  {value: '2020', label: '2020'},
-  {value: '2021', label: '2021'}
-]
+  const pieData = useMemo(() => {
+    return dataset.countries[optionCountry?.value]?.nivo.pie.data
+  }, [dataset.countries, optionCountry?.value])
 
-const CountryDetailCard = (props) => {
-  const [regions, setRegions] = useState();
-  const [optionRegion, setOptionRegion] = useState();
-  const [optionCountry, setOptionCountry] = useState();
-  const [optionYear, setOptionYear] = useState();
-  // do fetching and filtering of data on this component
-  // based on options above
-  // dataset.get(optionRegion, whatever)
-  // props for now is just an object of data for each graphType
+  const barData = useMemo(() => {
+    return dataset.countries[optionCountry?.value]?.nivo.bar.data
+  }, [dataset.countries, optionCountry?.value])
 
+  const lineData = useMemo(() => {
+    return dataset.countries[optionCountry?.value]?.nivo.line.data
+  }, [dataset.countries, optionCountry?.value])
 
-  const {radarData, pieData, barData, lineData} = props;
-  // later it can be just the data object, ready for filtering like raimundo did
+  const handleSetRegion = (region) => {
+    setOptionRegion(region)
+    setOptionCountry(countries[0])
+  }
+
+  // deal with change on region -> change country
+  useEffect(() => {
+    setOptionCountry(countries[0])
+  }, [countries, optionRegion, regions])
 
   return (
     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start'}}>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-        <SelectComponent options={optionRegions} onChangeHandle={setOptionRegion}/>
-        <SelectComponent options={optionCountries} onChangeHandle={setOptionCountry}/>
-        <SelectComponent options={optionYears} onChangeHandle={setOptionYear}/>
+        <SelectComponent options={regions} onChangeHandle={handleSetRegion} value={optionRegion}/>
+        <SelectComponent options={countries} onChangeHandle={setOptionCountry} value={optionCountry}/>
       </div>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'flex-start'}}>
-        <RadarComponent data={radarData}/>
+        <RadarComponent data={radarData ? radarData : []}
+                        keys={radarData && Object.keys(radarData[0]).filter(k => k !== 'Year')}/>
         <PieComponent data={pieData}/>
-        <BarComponent data={barData}/>
+        <BarComponent data={barData ? barData : []}
+                      keys={barData && Object.keys(barData[0]).filter(k => k !== 'Year')}/>
       </div>
       <LineComponent data={lineData}/>
     </div>

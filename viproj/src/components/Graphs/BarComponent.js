@@ -1,13 +1,13 @@
 import React from 'react';
 import {ResponsiveBar} from "@nivo/bar";
 
-const BarComponent = ({data}) => {
+const BarComponent = ({data, keys}) => {
   return (
     <div style={{height: '400px', width: '33%'}}>
       <ResponsiveBar
         data={data}
-        keys={['hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut']}
-        indexBy="country"
+        keys={keys}
+        indexBy="Year"
         margin={{top: 20, right: 10, bottom: 100, left: 60}}
         padding={0.3}
         valueScale={{type: 'linear'}}

@@ -29,7 +29,7 @@ const formatGroupLabel = data => (
   </div>
 );
 
-const SelectComponent = ({options, onChangeHandle}) => {
+const SelectComponent = ({options, onChangeHandle, value}) => {
   return (
     <div style={{width: '200px'}}>
       <Select
@@ -37,6 +37,7 @@ const SelectComponent = ({options, onChangeHandle}) => {
         defaultValue={options && options[0]}
         options={options}
         formatGroupLabel={formatGroupLabel}
+        value={value}
       />
     </div>
   );
