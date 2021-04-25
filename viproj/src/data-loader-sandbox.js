@@ -2,21 +2,23 @@
 Usar dataset tem a seguinte estrutura.
 {
     data: 
-        [ é um array com todos objectos, cada objeto é um linha do csv ],
+        [ Array of objects, each object is a dataset row ],
     countries: { 
         'Portugal': { 
-                '2016': <O_REGISTO>, 
+                '2016': { Portugal row for 2016 }, 
                 '2017': (...) 
             }, 
         'Spain': {
+            '2016': { Spanish row for 2016 }, 
             (...) 
         },
         (...)
     },
     regions: { 
         'Western Europe': [
-                { Portugal em 2016 },
-                { Portugal em 2017},
+                { Portugal in 2016 },
+                { Portugal in 2017 },
+                { Portugal in etc. },
                 { Spain ... },
                 { etc. }
         ],
@@ -24,69 +26,70 @@ Usar dataset tem a seguinte estrutura.
     }
     ranks: {
         '2016' : {
-            '1': { país em primeiro},
-            '2': { etc. }
+            '1': { Country ranked in first },
+            '2': { Country ranked in second  }
         }
     }
 }
 
-Cada país tem um nivo, o nivo tem lá dentro os dados organizados para injetar nos graficos.
+Each country has its Nivo.rocks objects for each type of chart
 
-Portugal.nivo.radar
-Portugal.nivo.lines
-Portugal.nivo.pie
-Portugal.nivo.bars
+Like:
+dataset.Portugal.nivo.radar
+dataset.Portugal.nivo.lines
+dataset.Portugal.nivo.pie
+dataset.Portugal.nivo.bars
 
-Dentro de cada uma destas categorias há, por exemplo:
-    Portugal.nivo.radar.meta.name : nome do chart do nivo
-    Portugal.nivo.radar.meta.url : isto é o url do site no nivo para este tipo de gráfico
-    Portugal.nivo.radar.meta.data: objeto com os dados formatados para o objeto
+Inside each of this Nivo.rocks objects there is a meta object with info about how to use the Libraries.
+Example:
+    Portugal.nivo.radar.meta.name : Name for the Nivo.rocks chart
+    Portugal.nivo.radar.meta.url  : Nivo.rocks tyoe of chart documentation
+    Portugal.nivo.radar.meta.data : objeto com os dados formatados para o objeto
 **/
 
-// Exemplo para aceder aos dados
+// Example for accessing data
 
-// Nome giro, para 'lidar com a felicidade' :)
+// Nice name for handling happiness, our function to read the dataset is the hapinessHandler :)
 const happinessHandler = require('./data/hapiness-dataset/happiness');
 
 happinessHandler.Happiness((err, dataset) => {
     if (err) return err;
     const Portugal = dataset.countries['Portugal'];
 
-    // Exemplos de acesso aos dados para o Nivo.rocks para portugal
+    // Example for accessing data for Nivo.rocks para portugal:
     console.log(Portugal.nivo.radar.data);
     console.log(Portugal.nivo.line.data);
     console.log(Portugal.nivo.pie.data);
     console.log(Portugal.nivo.bar.data);
 
-    // Cada gráfico tem um meta com o url do manual do Nivo
+    // Portugal Nivo.rocks Radar chart meta data:
     console.log(Portugal.nivo.radar.meta);
 
-    // Pode obter-se todos os países assim:
+    // Example for obtaining all countries:
     const countries = dataset.countries;
 
-    // Ou a o nome de cada país assim:
+    // Or each country name:
     Object.getOwnPropertyNames(countries);
 
-    // Pode obter-se o nome das regiões assim:
+    // Or each region data:
     const regions = dataset.regions;
 
-    // Ou os nomes das regiões
+    // Or each region names
     Object.getOwnPropertyNames(regions);
 
-    // E a lista de países em determinada região assim:
+    // Or the list of countries in one region:
     regions['Western Europe'].forEach((countryObj) => {
-        // fazer coisas com cada país
+        // print
         console.log(countryObj.Country);
     });
 
-    // País em primeiro lugar em 2019
+    // Accessing and printing first country in rank
     console.log(dataset.ranks['2019']['10']);
 
-    // Obter dados para o mapa. Estão organizados por ano.
-    //Por exemplo:
+    // Accesing and printing map data, grouped by year
     console.log(dataset.geoMap['2019']);
 
-    // Bom, é explorar
+    // Well, it's a lot to explore
 
     const fs = require('fs');
     fs.writeFile('dataset.json', JSON.stringify(dataset), () => {});
