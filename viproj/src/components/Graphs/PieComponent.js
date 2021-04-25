@@ -1,8 +1,15 @@
 import React from 'react';
 import {ResponsivePie} from '@nivo/pie';
 
+/**
+ * PieComponent is the component that has all the Pie graph behaviour
+ * @param data array with all the data to be used in the pie graph
+ * @returns {JSX.Element}
+ */
 const PieComponent = ({data}) => {
   return (
+    // All the Graphs by nivo require a defined height and weight
+    // Else it will be 0 and no graph will be rendered
     <div style={{height: '400px', width: '33%'}}>
       <ResponsivePie
         enableRadialLabels={false}
