@@ -70,7 +70,7 @@ After successfull download just follow the installation download.
 
 #### 1.4. Downloading pre-prepared project
 
-After installing all software, download the project from [here](https://github.com/Andree37/vi-nivo-proj/archive/refs/heads/main.zip) and unzip it to a local folder.
+After installing all software, download the project from [here](https://github.com/Andree37/vi-nivo-proj/archive/refs/heads/main.zip) and unzip it to a local folder. Or clone the project from the Github Repo: [https://github.com/Andree37/vi-nivo-proj.git](https://github.com/Andree37/vi-nivo-proj.git).
 
 #### 1.5. Install project dependencies
 
