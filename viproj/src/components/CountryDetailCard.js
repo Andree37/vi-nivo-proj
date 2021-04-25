@@ -12,10 +12,9 @@ const CountryDetailCard = ({dataset}) => {
 
   // selectors
   const countries = useMemo(() => {
-    return dataset.regions[optionRegion?.value]?.map(r => ({
-      value: r.Country,
-      label: r.Country
-    }))
+    const countries = dataset.regions[optionRegion?.value]?.map(r => r.Country)
+    const countriesSet = new Set(countries)
+    return Array.from(countriesSet).map(c => ({value: c, label: c}))
   }, [dataset.regions, optionRegion?.value])
 
   const regions = useMemo(() => {

@@ -1,9 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import CountryDetailCard from "./CountryDetailCard";
 const dataset = require('../data/hapiness-dataset/dataset.json');
 
-// countrydetailcard props -> data object
-// props need to be changed to the object to do the data filtering
 const ComparisonCard = () => {
   return (
     <div style={{width: '100%', border: "solid black 1px"}}>
