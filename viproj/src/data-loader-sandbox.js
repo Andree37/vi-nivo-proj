@@ -87,4 +87,7 @@ happinessHandler.Happiness((err, dataset) => {
     console.log(dataset.geoMap['2019']);
 
     // Bom, é explorar
+
+    const fs = require('fs');
+    fs.writeFile('dataset.json', JSON.stringify(dataset), () => {});
 });
