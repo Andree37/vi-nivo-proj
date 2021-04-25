@@ -103,13 +103,7 @@ module.exports.Happiness = function (callback) {
                 generosity.value = parseFloat((generosity.value / count).toFixed(2));
                 perceptionsOfCorruption.value = parseFloat((perceptionsOfCorruption.value / count).toFixed(2));
 
-                return [
-                    socialSupport,
-                    healthLifeExpectancy,
-                    freedomOfChoices,
-                    generosity,
-                    // perceptionsOfCorruption // Retirar comentário para incluir no gráfico
-                ];
+                return [socialSupport, healthLifeExpectancy, freedomOfChoices, generosity, perceptionsOfCorruption];
             };
 
             const buildLinesChartStructure = (country) => {
