@@ -8,7 +8,7 @@ const BarComponent = ({ data, keys }) => {
                 data={data}
                 keys={keys}
                 indexBy='Year'
-                margin={{ top: 20, right: 10, bottom: 100, left: 60 }}
+                margin={{ top: 20, right: 10, bottom: 50, left: 60 }}
                 padding={0.3}
                 valueScale={{ type: 'linear' }}
                 indexScale={{ type: 'band', round: true }}
@@ -55,30 +55,6 @@ const BarComponent = ({ data, keys }) => {
                 labelSkipWidth={12}
                 labelSkipHeight={12}
                 labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                legends={[
-                    {
-                        dataFrom: 'keys',
-                        anchor: 'bottom',
-                        direction: 'row',
-                        justify: false,
-                        translateX: 0,
-                        translateY: 65,
-                        itemsSpacing: 2,
-                        itemWidth: 40,
-                        itemHeight: 20,
-                        itemDirection: 'top-to-bottom',
-                        itemOpacity: 0.85,
-                        symbolSize: 20,
-                        effects: [
-                            {
-                                on: 'hover',
-                                style: {
-                                    itemOpacity: 1,
-                                },
-                            },
-                        ],
-                    },
-                ]}
                 animate={true}
                 motionStiffness={90}
                 motionDamping={15}

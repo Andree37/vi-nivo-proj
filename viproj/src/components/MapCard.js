@@ -4,18 +4,15 @@ import SelectComponent from "./SelectComponent";
 const dataset = require('../data/hapiness-dataset/dataset.json');
 
 function MapCard() {
-  const [year, setYear] = useState("2015");
+  const [year, setYear] = useState({value: "2015", label: "2015"});
 
   const years = useMemo(() => {
     return Object.keys(dataset.geoMap).map(g => ({value: g, label: g}));
   }, [])
 
   const geoData = useMemo(()=> {
-    return dataset.geoMap[year]
+    return dataset.geoMap[year.value]
   }, [year])
-
-  console.log(years)
-  console.log(geoData)
 
   return (
     <div style={{width: '100%', height: "100%"}}>

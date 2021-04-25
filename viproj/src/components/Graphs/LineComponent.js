@@ -6,7 +6,7 @@ const LineComponent = ({ data }) => {
         <div style={{ height: '400px', width: '100%' }}>
             <ResponsiveLine
                 data={data}
-                margin={{ top: 10, right: 110, bottom: 50, left: 60 }}
+                margin={{ top: 40, right: 110, bottom: 50, left: 60 }}
                 xScale={{ type: 'point' }}
                 yScale={{ type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false }}
                 yFormat=' >-.2f'
@@ -17,7 +17,7 @@ const LineComponent = ({ data }) => {
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: 0,
-                    legend: 'transportation',
+                    legend: 'Years',
                     legendOffset: 36,
                     legendPosition: 'middle',
                 }}
@@ -38,14 +38,14 @@ const LineComponent = ({ data }) => {
                 useMesh={true}
                 legends={[
                     {
-                        anchor: 'bottom-right',
-                        direction: 'column',
+                        anchor: 'top',
+                        direction: 'row',
                         justify: false,
-                        translateX: 100,
-                        translateY: 0,
-                        itemsSpacing: 0,
+                        translateX: 30,
+                        translateY: -40,
+                        itemsSpacing: 20,
                         itemDirection: 'left-to-right',
-                        itemWidth: 80,
+                        itemWidth: 130,
                         itemHeight: 20,
                         itemOpacity: 0.75,
                         symbolSize: 12,

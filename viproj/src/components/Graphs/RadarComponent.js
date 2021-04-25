@@ -9,7 +9,7 @@ const RadarComponent = ({ data, keys }) => {
                 keys={keys}
                 indexBy='Year'
                 maxValue='auto'
-                margin={{ top: 0, right: 40, bottom: 90, left: 40 }}
+                margin={{ top: 0, right: 40, bottom: 0, left: 40 }}
                 curve='linearClosed'
                 borderWidth={2}
                 borderColor={{ from: 'color' }}
@@ -21,7 +21,6 @@ const RadarComponent = ({ data, keys }) => {
                 dotColor={{ theme: 'background' }}
                 dotBorderWidth={2}
                 dotBorderColor={{ from: 'color' }}
-                enableDotLabel={true}
                 dotLabel='value'
                 dotLabelYOffset={-12}
                 colors={{ scheme: 'nivo' }}
@@ -30,27 +29,6 @@ const RadarComponent = ({ data, keys }) => {
                 animate={true}
                 motionConfig='wobbly'
                 isInteractive={true}
-                legends={[
-                    {
-                        anchor: 'bottom',
-                        direction: 'row',
-                        translateX: -30,
-                        translateY: -30,
-                        itemWidth: 80,
-                        itemHeight: 20,
-                        itemTextColor: '#999',
-                        symbolSize: 12,
-                        symbolShape: 'circle',
-                        effects: [
-                            {
-                                on: 'hover',
-                                style: {
-                                    itemTextColor: '#000',
-                                },
-                            },
-                        ],
-                    },
-                ]}
             />
         </div>
     );
