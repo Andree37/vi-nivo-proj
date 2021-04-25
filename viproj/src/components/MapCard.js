@@ -1,6 +1,7 @@
 import React, {useMemo, useState} from 'react';
 import GeoChart from "./Graphs/GeoChart";
 import SelectComponent from "./SelectComponent";
+import TableComponent from "./TableComponent";
 const dataset = require('../data/hapiness-dataset/dataset.json');
 
 function MapCard() {
@@ -21,6 +22,7 @@ function MapCard() {
       </div>
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center',  border: "solid black 1px"}}>
         <GeoChart data={geoData} />
+        <TableComponent countries={dataset.ranks[year.value]}/>
       </div>
     </div>
   );

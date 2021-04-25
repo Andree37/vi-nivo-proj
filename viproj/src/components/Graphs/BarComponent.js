@@ -13,6 +13,7 @@ const BarComponent = ({ data, keys }) => {
                 valueScale={{ type: 'linear' }}
                 indexScale={{ type: 'band', round: true }}
                 colors={{ scheme: 'nivo' }}
+                maxValue={4}
                 defs={[
                     {
                         id: 'dots',
@@ -34,8 +35,6 @@ const BarComponent = ({ data, keys }) => {
                     },
                 ]}
                 borderColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-                axisTop={null}
-                axisRight={null}
                 axisBottom={{
                     tickSize: 5,
                     tickPadding: 5,
