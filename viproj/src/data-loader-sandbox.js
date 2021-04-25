@@ -1,20 +1,20 @@
-/* 
+/*
 Usar dataset tem a seguinte estrutura.
 {
-    data: 
+    data:
         [ Array of objects, each object is a dataset row ],
-    countries: { 
-        'Portugal': { 
-                '2016': { Portugal row for 2016 }, 
-                '2017': (...) 
-            }, 
+    countries: {
+        'Portugal': {
+                '2016': { Portugal row for 2016 },
+                '2017': (...)
+            },
         'Spain': {
-            '2016': { Spanish row for 2016 }, 
-            (...) 
+            '2016': { Spanish row for 2016 },
+            (...)
         },
         (...)
     },
-    regions: { 
+    regions: {
         'Western Europe': [
                 { Portugal in 2016 },
                 { Portugal in 2017 },
@@ -53,44 +53,45 @@ Example:
 const happinessHandler = require('./data/hapiness-dataset/happiness');
 
 happinessHandler.Happiness((err, dataset) => {
-    if (err) return err;
-    const Portugal = dataset.countries['Portugal'];
+  if (err) return err;
+  const Portugal = dataset.countries['Portugal'];
 
-    // Example for accessing data for Nivo.rocks para portugal:
-    console.log(Portugal.nivo.radar.data);
-    console.log(Portugal.nivo.line.data);
-    console.log(Portugal.nivo.pie.data);
-    console.log(Portugal.nivo.bar.data);
+  // Example for accessing data for Nivo.rocks para portugal:
+  console.log(Portugal.nivo.radar.data);
+  console.log(Portugal.nivo.line.data);
+  console.log(Portugal.nivo.pie.data);
+  console.log(Portugal.nivo.bar.data);
 
-    // Portugal Nivo.rocks Radar chart meta data:
-    console.log(Portugal.nivo.radar.meta);
+  // Portugal Nivo.rocks Radar chart meta data:
+  console.log(Portugal.nivo.radar.meta);
 
-    // Example for obtaining all countries:
-    const countries = dataset.countries;
+  // Example for obtaining all countries:
+  const countries = dataset.countries;
 
-    // Or each country name:
-    Object.getOwnPropertyNames(countries);
+  // Or each country name:
+  Object.getOwnPropertyNames(countries);
 
-    // Or each region data:
-    const regions = dataset.regions;
+  // Or each region data:
+  const regions = dataset.regions;
 
-    // Or each region names
-    Object.getOwnPropertyNames(regions);
+  // Or each region names
+  Object.getOwnPropertyNames(regions);
 
-    // Or the list of countries in one region:
-    regions['Western Europe'].forEach((countryObj) => {
-        // print
-        console.log(countryObj.Country);
-    });
+  // Or the list of countries in one region:
+  regions['Western Europe'].forEach((countryObj) => {
+    // print
+    console.log(countryObj.Country);
+  });
 
-    // Accessing and printing first country in rank
-    console.log(dataset.ranks['2019']['10']);
+  // Accessing and printing first country in rank
+  console.log(dataset.ranks['2019']['10']);
 
-    // Accesing and printing map data, grouped by year
-    console.log(dataset.geoMap['2019']);
+  // Accesing and printing map data, grouped by year
+  console.log(dataset.geoMap['2019']);
 
-    // Well, it's a lot to explore
+  // Well, it's a lot to explore
 
-    const fs = require('fs');
-    fs.writeFile('dataset.json', JSON.stringify(dataset), () => {});
+  const fs = require('fs');
+  fs.writeFile('./data/hapiness-dataset/dataset.json', JSON.stringify(dataset), () => {
+  });
 });

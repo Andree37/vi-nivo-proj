@@ -1,12 +1,17 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {Layout, Menu} from "antd";
+import {Header} from "antd/es/layout/layout";
 
 import ComparisonCard from './components/ComparisonCard';
 import WorkshopComponent from './components/Graphs/WorkshopComponent';
 import MapCard from './components/MapCard';
-import {Layout, Menu} from "antd";
-import {Header} from "antd/es/layout/layout";
 
+/**
+ * Main entry point to the application. Uses a Router to define the navigation
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const App = () => {
   return (
     <Router>
@@ -33,9 +38,9 @@ const App = () => {
         </Header>
       </Layout>
       <Switch>
-        <Route exact path='/' component={MapCard} />
-        <Route exact path='/comparison' component={ComparisonCard} />
-        <Route exact path='/workshop' component={WorkshopComponent} />
+        <Route exact path='/' component={MapCard}/>
+        <Route exact path='/comparison' component={ComparisonCard}/>
+        <Route exact path='/workshop' component={WorkshopComponent}/>
       </Switch>
     </Router>
   );

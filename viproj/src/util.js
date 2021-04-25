@@ -6,18 +6,18 @@ const csv = require('csv-parser');
  * @param {function} callback : { err, sucess }
  */
 module.exports.readCsvToArray = (path, callback) => {
-    const data = [];
-    fs.createReadStream(path)
-        .pipe(csv())
-        .on('data', (row) => {
-            data.push(row);
-        })
-        .on('error', (err) => {
-            callback(err, null);
-        })
-        .on('end', () => {
-            callback(null, data);
-        });
+  const data = [];
+  fs.createReadStream(path)
+  .pipe(csv())
+  .on('data', (row) => {
+    data.push(row);
+  })
+  .on('error', (err) => {
+    callback(err, null);
+  })
+  .on('end', () => {
+    callback(null, data);
+  });
 };
 
 /**
@@ -27,22 +27,22 @@ module.exports.readCsvToArray = (path, callback) => {
  * @param {array} arrayToExtend : Array to extend. Null for an empty array
  */
 module.exports.ArrayEx = function (arrayToExtend = null) {
-    // Criar o Array
-    const values = !arrayToExtend ? [] : [...arrayToExtend];
+  // Criar o Array
+  const values = !arrayToExtend ? [] : [...arrayToExtend];
 
-    /**
-     * Parasite function
-     * @param {function} fnCallback
-     */
-    values.syncForEach = function (fnCallback) {
-        const iterator = (i) => {
-            if (values.length > i) {
-                fnCallback(values[i], i, values);
-                iterator(i + 1);
-            }
-        };
-        iterator(0);
+  /**
+   * Parasite function
+   * @param {function} fnCallback
+   */
+  values.syncForEach = function (fnCallback) {
+    const iterator = (i) => {
+      if (values.length > i) {
+        fnCallback(values[i], i, values);
+        iterator(i + 1);
+      }
     };
-    // retorna o Array
-    return values;
+    iterator(0);
+  };
+  // retorna o Array
+  return values;
 };

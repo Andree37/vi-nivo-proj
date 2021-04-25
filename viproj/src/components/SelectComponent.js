@@ -1,9 +1,7 @@
-/**
- * Select component for the data filtering
- */
 import React from 'react';
 import Select from "react-select";
 
+// Some styling for the selected items
 const groupStyles = {
   display: 'flex',
   alignItems: 'center',
@@ -22,6 +20,7 @@ const groupBadgeStyles = {
   textAlign: 'center',
 };
 
+// helper function to format the labels
 const formatGroupLabel = data => (
   <div style={groupStyles}>
     <span>{data.label}</span>
@@ -29,6 +28,13 @@ const formatGroupLabel = data => (
   </div>
 );
 
+/**
+ * Select component, used to select over some values sent in the options parameter
+ * @param options Array of options to be shown
+ * @param onChangeHandle Function to be called when a change in value happens
+ * @param value Value that is shown
+ * @returns {JSX.Element}
+ */
 const SelectComponent = ({options, onChangeHandle, value}) => {
   return (
     <div style={{width: '200px'}}>

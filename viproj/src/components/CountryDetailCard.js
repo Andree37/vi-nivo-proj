@@ -1,28 +1,41 @@
 import React, {useEffect, useMemo, useState} from 'react';
 
+// All the components in this country detail comparison card
 import RadarComponent from "./Graphs/RadarComponent";
 import PieComponent from "./Graphs/PieComponent";
 import BarComponent from "./Graphs/BarComponent";
 import LineComponent from "./Graphs/LineComponent";
 import SelectComponent from "./SelectComponent";
 
+/**
+ * Component that holds all the graphs inside for the comparison between this card and another of the same type
+ * @param dataset dataset object that we have treated
+ * @returns {JSX.Element}
+ */
+
 const CountryDetailCard = ({dataset}) => {
   const [optionRegion, setOptionRegion] = useState({value: "Western Europe", label: "Western Europe"});
   const [optionCountry, setOptionCountry] = useState({value: "Switzerland", label: "Switzerland"});
 
   // selectors
+
+  // countries select, just a little treatment on the data that comes from the dataset
+  // making it highly responsive
   const countries = useMemo(() => {
     const countries = dataset.regions[optionRegion?.value]?.map(r => r.Country)
     const countriesSet = new Set(countries)
     return Array.from(countriesSet).map(c => ({value: c, label: c}))
   }, [dataset.regions, optionRegion?.value])
 
+  // regions select, just a little treatment on the data that comes from the dataset
+  // making it highly responsive
   const regions = useMemo(() => {
     return Object.keys(dataset.regions).map(c => ({value: c, label: c}));
   }, [dataset])
 
   // filter dataset to the declared variables above
   // optionRegion, optionCountry
+  // useMemo is used here to help with computing issues
   const radarData = useMemo(() => {
     return dataset.countries[optionCountry?.value]?.nivo.radar.data
   }, [dataset.countries, optionCountry?.value])
@@ -39,6 +52,8 @@ const CountryDetailCard = ({dataset}) => {
     return dataset.countries[optionCountry?.value]?.nivo.line.data
   }, [dataset.countries, optionCountry?.value])
 
+  // Whenever we change the region, we have to define the country as the first on the list
+  // Just a little treatment for good user experience
   const handleSetRegion = (region) => {
     setOptionRegion(region)
     setOptionCountry(countries[0])
