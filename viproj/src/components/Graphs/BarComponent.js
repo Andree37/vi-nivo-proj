@@ -48,7 +48,7 @@ const BarComponent = ({ data, keys }) => {
                     tickSize: 5,
                     tickPadding: 5,
                     tickRotation: 0,
-                    legend: 'Stacked quotation',
+                    legend: 'Stacked score',
                     legendPosition: 'middle',
                     legendOffset: -40,
                 }}
