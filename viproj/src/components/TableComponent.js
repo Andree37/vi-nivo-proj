@@ -51,14 +51,13 @@ const TableComponent = ({countries}) => {
       rank: c.Rank,
       region: c.Region,
       country: c.Country,
-      capital: c.Capital,
       score: c.Score,
     }));
   }, [countries]);
 
   return (
     <div>
-      <Table dataSource={dataSource} columns={columns} pagination={false}/>;
+      <Table dataSource={dataSource} columns={columns} pagination={false}/>
     </div>
   );
 };

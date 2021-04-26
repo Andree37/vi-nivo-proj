@@ -15,7 +15,7 @@ const LineComponent = ({data}) => {
         data={data}
         margin={{top: 40, right: 110, bottom: 50, left: 60}}
         xScale={{type: 'point'}}
-        yScale={{type: 'linear', min: 'auto', max: 'auto', stacked: false, reverse: false}}
+        yScale={{type: 'linear', min: 'auto', max: 2, stacked: false, reverse: false}}
         yFormat=' >-.2f'
         axisTop={null}
         axisRight={null}
@@ -73,5 +73,6 @@ const LineComponent = ({data}) => {
     </div>
   );
 };
+
 
 export default LineComponent;
