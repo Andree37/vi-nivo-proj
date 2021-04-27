@@ -17,8 +17,14 @@ const App = () => {
     <Router>
       <Layout>
         <Header className="header">
-          <div className="logo"/>
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+          <div style={{
+            float: 'left',
+            width: '150px',
+            margin: '0 24px 0 0',
+            color: 'white',
+            fontWeight: 'bold'
+          }}>Happiness Index</div>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
             <Menu.Item key="1">
               <Link to='/' style={{color: 'inherit', textDecoration: 'inherit'}}>
                 Map
